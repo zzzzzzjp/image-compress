@@ -2,29 +2,108 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>画像圧縮｜無料・アップロード不要</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>画像圧縮ツール</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #e0e7ff, #f8fafc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: #ffffff;
+      padding: 32px;
+      border-radius: 16px;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 24px;
+      font-size: 1.5rem;
+    }
+
+    input[type="file"] {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+      font-size: 0.9rem;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      margin-top: 6px;
+    }
+
+    .quality-value {
+      font-weight: bold;
+      margin-left: 6px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 20px;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      background: #4f46e5;
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #4338ca;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 0.9rem;
+    }
+
+    #result a {
+      display: block;
+      margin-top: 8px;
+      color: #2563eb;
+      text-decoration: none;
+    }
+
+    #result a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>画像圧縮ツール</h1>
-  <p>画像はアップロードされません。すべて端末内で処理されます。</p>
+  <div class="container">
+    <h1>画像圧縮ツール</h1>
 
-  <input type="file" id="fileInput" accept="image/*" multiple>
-  <br><br>
+    <input type="file" id="fileInput" accept="image/*" multiple>
 
-  <label>最大サイズ：</label>
-  <select id="sizeSelect">
-    <option value="1">1MB以下</option>
-    <option value="0.5">500KB以下</option>
-    <option value="0.2">200KB以下</option>
-  </select>
+    <label>
+      圧縮率：
+      <input type="range" id="quality" min="10" max="100" value="70">
+      <span id="qualityValue" class="quality-value">70</span>%
+    </label>
 
-  <br><br>
-  <button onclick="compressImages()">圧縮する</button>
+    <button onclick="compressImages()">圧縮する</button>
 
-  <div id="result"></div>
+    <div id="result"></div>
+  </div>
 
-  <script src="https://unpkg.com/browser-image-compression/dist/browser-image-compression.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
+
